@@ -1,21 +1,44 @@
 body {
     background-color: bisque;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
     text-align: center;
     border-radius: 5px;
-    border-style: solid;
-    border-width: medium;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: white;
 }
 
-div {
+.info {
     text-align: center;
     border-radius: 5px;
-    border-style: dotted;
-    border-width: medium;
+    border: 2px dotted black;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 20px;
 }
 
-.a {
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.repo-list {
     text-align: center;
+    padding: 0;
+}
+
+.repo-list li {
+    margin: 5px 0;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
 }
