@@ -1,0 +1,202 @@
+:root {
+    --yellow: #ffd23f;
+    --yellow-soft: #fff1b8;
+    --blue: #1f4fe0;
+    --navy: #0b2a6f;
+    --paper: #fffdf5;
+    --muted: #4a5a85;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: var(--yellow);
+    /* subtle dotted texture */
+    background-image: radial-gradient(rgba(11, 42, 111, 0.12) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    color: var(--navy);
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 32px 16px 56px;
+}
+
+/* Title banner */
+.page-title {
+    margin: 0 0 32px;
+    padding: 16px 20px;
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    letter-spacing: 0.01em;
+    color: var(--yellow);
+    background-color: var(--blue);
+    border: 3px solid var(--navy);
+    border-radius: 10px;
+    box-shadow: 6px 6px 0 var(--navy);
+}
+
+/* Two-column card: details left, picture right */
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: start;
+    padding: 36px;
+    background-color: var(--paper);
+    border: 3px solid var(--navy);
+    border-radius: 10px;
+    box-shadow: 8px 8px 0 var(--blue);
+}
+
+.profile-details h2 {
+    margin: 0;
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    line-height: 1.15;
+    color: var(--navy);
+}
+
+.role {
+    display: inline-block;
+    margin: 10px 0 24px;
+    padding: 3px 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--yellow);
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+}
+
+.profile-details h3 {
+    margin: 32px 0 12px;
+    padding-left: 12px;
+    font-size: 1.1rem;
+    border-left: 6px solid var(--blue);
+}
+
+/* Detail rows */
+.info {
+    margin: 0;
+    border: 2px solid var(--navy);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.info div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    padding: 10px 16px;
+}
+
+.info div:nth-child(odd) { background: var(--yellow-soft); }
+.info div + div { border-top: 1px solid rgba(11, 42, 111, 0.2); }
+
+.info dt {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.info dd {
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Repo links */
+.repo-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.repo-list a {
+    display: inline-block;
+    padding: 7px 16px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background: var(--blue);
+    border: 2px solid var(--navy);
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 var(--navy);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.repo-list a:hover {
+    background: var(--yellow);
+    color: var(--navy);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--navy);
+}
+
+.repo-list a:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--navy);
+}
+
+a:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+}
+
+/* Photo with offset blue block behind */
+.profile-photo {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    background: var(--yellow);
+    border: 3px solid var(--navy);
+    border-radius: 10px;
+    box-shadow: 12px 12px 0 var(--blue);
+    overflow: hidden;
+}
+
+/* Initials show until profile.jpg exists */
+.profile-photo::before {
+    content: attr(data-initials);
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+.profile-photo img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tablet / mobile: stack, photo on top */
+@media (max-width: 760px) {
+    .profile {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 24px 20px 28px;
+    }
+
+    .profile-photo {
+        order: -1;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .info div { grid-template-columns: 100px 1fr; padding: 10px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .repo-list a { transition: none; }
+}
